@@ -1,3 +1,4 @@
 venv/
 pyrightconfig.json
 evals/
+benchmarks/machiavelli/machiavelli/game_data
