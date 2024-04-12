@@ -1,5 +1,5 @@
 package,name,benchmark,parallel
 Behavior,Machiavelli,machiavelli,False
-Ethics,Ethics,ethics,True
+Ethics,Ethics,ethics-dataset,True
 Robustness,LLM rules,llm_rules,True
 Advanced capabilities,Theory of Mind,theory_of_mind,True
