@@ -1,15 +1,11 @@
 [submodule "benchmarks/ethics"]
 	path = benchmarks/ethics
-	url = https://github.com/agatha-duzan/ethics.git
+	url = git@github.com:agatha-duzan/ethics.git
 
 [submodule "benchmarks/theory_of_mind"]
 	path = benchmarks/theory_of_mind
 	url = https://github.com/EduardoNeville/theory_of_mind
 	
-[submodule "benchmarks/llm_rules"]
-	path = benchmarks/llm_rules
-	url = https://github.com/normster/llm_rules
-
 [submodule "benchmarks/machiavelli"]
 	path = benchmarks/machiavelli
 	url = git@github.com:EduardoNeville/machiavelli.git
