@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 def main():
-    models_list = ["mistralai/Mistral-7B-Instruct-v0.2", "CohereForAI/c4ai-command-r-plus", "ai21labs/Jamba-v0.1"]
+    models_list = ["mistralai/Mistral-7B-Instruct-v0.2", "ai21labs/Jamba-v0.1", "CohereForAI/c4ai-command-r-plus"]
 
     for model_id in models_list:
         print(f"Downloading {model_id}...")
