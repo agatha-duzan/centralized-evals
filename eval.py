@@ -40,7 +40,7 @@ def ethics():
     os.chdir('../../')
 
 def theory_of_mind():
-    os.chdir('benchmarks/theory_of_mind_gpt4/scripts/')
+    os.chdir('benchmarks/theory_of_mind/scripts/')
     if 'gpt-' in model_name:
         os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10'])
@@ -53,6 +53,6 @@ def llm_rules():
     if 'gpt-' in model_name:
         subprocess.run(['python', 'evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
     else:
-        subprocess.run(['python', 'evaluate.py', '--provider', f"transformers", '--model', f"{model_name}@{cached_location}"]) 
+        subprocess.run(['python', 'evaluate.py', '--provider', f"transformers", '--model', f"{model_name}"]) 
 if __name__ == "__main__":
     main()
