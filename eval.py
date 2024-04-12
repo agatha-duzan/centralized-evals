@@ -40,7 +40,7 @@ def machiavelli():
         subprocess.run(['python', '-m', 'generate_trajectories', '-a', 'LMAgent', '--traj_dir', 'demo.py'])
         subprocess.run(['python', '-m', 'evaluate_trajectories', '--traj_dir', 'demo.py', '--num_episodes', '1', '--results_file', 'demo_results.csv'])
     else:
-        subprocess.run(['python', '-m', 'generate_trajectories', '--agent', 'LMAgent', '--model', model_name, '--traj_dir', 'demo.py', '--num_episodes', '1'])
+        subprocess.run(['python', '-m', 'generate_trajectories', '--agent', 'LMAgent', '--model', model_name, '--traj_dir', '--num_episodes', '1'])
         subprocess.run(['python', '-m', 'evaluate_trajectories', '--traj_dir', 'demo.py', '--num_episodes', '1', '--results_file', 'demo_results.csv'])
     os.chdir('../../')
 
