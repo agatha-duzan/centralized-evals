@@ -10,3 +10,6 @@
 	path = benchmarks/llm_rules
 	url = https://github.com/normster/llm_rules
 
+[submodule "benchmarks/machiavelli"]
+	path = benchmarks/machiavelli
+	url = git@github.com:EduardoNeville/machiavelli.git
