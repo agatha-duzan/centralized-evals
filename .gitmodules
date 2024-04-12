@@ -2,14 +2,14 @@
 	path = benchmarks/ethics-dataset
 	url = https://github.com/agatha-duzan/ethics-dataset.git
 
-[submodule "benchmarks/machiavelli"]
-	path = benchmarks/machiavelli
-	url = https://github.com/EduardoNeville/machiavelli
-
-[submodule "benchmarks/thoery_of_mind_gpt4"]
+[submodule "benchmarks/theory_of_mind"]
 	path = benchmarks/theory_of_mind
 	url = https://github.com/EduardoNeville/theory_of_mind
 	
 [submodule "benchmarks/llm_rules"]
 	path = benchmarks/llm_rules
 	url = https://github.com/normster/llm_rules
+
+[submodule "benchmarks/machiavelli"]
+	path = benchmarks/machiavelli
+	url = https://github.com/EduardoNeville/machiavelli
