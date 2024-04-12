@@ -14,7 +14,7 @@ def main():
     print("Selected packages: ", ', '.join(packages))
 
     with ProcessPoolExecutor() as executor:
-        futures = [executor.submit(benchmark) for benchmark in benchmarks]
+        futures = [executor.submit(globals()[benchmark]) for benchmark in benchmarks]
         for future in futures:
             print(f"Completed {future.result()}")
 
