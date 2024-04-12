@@ -1,6 +1,6 @@
-[submodule "benchmarks/ethics-dataset"]
-	path = benchmarks/ethics-dataset
-	url = https://github.com/agatha-duzan/ethics-dataset.git
+[submodule "benchmarks/ethics"]
+	path = benchmarks/ethics
+	url = https://github.com/agatha-duzan/ethics.git
 
 [submodule "benchmarks/theory_of_mind"]
 	path = benchmarks/theory_of_mind
