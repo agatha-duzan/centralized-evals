@@ -66,7 +66,10 @@ def llm_rules():
     if 'gpt-' in model_name:
         subprocess.run(['python', 'evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
     else:
-        subprocess.run(['python', 'evaluate.py', '--provider', f"transformers", '--model', f"{model_name}"]) 
+        print(f"====================")
+        print(f"REDTEAMING: \n {model_name}")
+        print(f"====================")
+        subprocess.run(["python","scripts/evaluate.py","--provider","transformers","--model",model_name, "--test_dir","data/redteam","--output_dir","logs/redteam"])
 
 if __name__ == "__main__":
     main()
