@@ -62,11 +62,13 @@ def theory_of_mind():
     os.chdir('../../../')
 
 def llm_rules():
-    os.chdir('benchmarks/llm_rules/scripts')
+    os.chdir('benchmarks/llm_rules')
     subprocess.run(['pip', 'install', '-e' '.'])
+    os.chdir('benchmarks/llm_rules/scripts')
     if 'gpt-' in model_name:
         subprocess.run(['python', 'evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
     else:
         subprocess.run(['python', 'evaluate.py', '--provider', f"transformers", '--model', f"{model_name}", f"--provider"]) 
+
 if __name__ == "__main__":
     main()
