@@ -69,7 +69,7 @@ def llm_rules():
         print(f"====================")
         print(f"REDTEAMING: \n {model_name}")
         print(f"====================")
-        subprocess.run(["python","scripts/evaluate_simple.py","--provider","transformers","--model",model_name, "--test_dir","data/redteam","--output_dir","logs/redteam"])
+        subprocess.run(["python","scripts/evaluate_simple.py","--provider","transformers","--model",model_name, "--model_name", model_name, "--test_dir","data/redteam","--output_dir","logs/redteam"])
     os.chdir('../../')
 
 if __name__ == "__main__":
