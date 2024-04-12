@@ -17,9 +17,19 @@ def main():
     print("Selected packages: ", ', '.join(packages))
 
     with ProcessPoolExecutor() as executor:
-        futures = [executor.submit(globals()[benchmark]) for benchmark in benchmarks]
-        for future in futures:
-            print(f"Completed {future.result()}")
+        futures = [executor.submit(run_benchmark, benchmark) for benchmark in benchmarks]
+        results = [future.result() for future in futures]
+
+        aggregated = aggregate_results(results)
+        result_filename = report_results(aggregated, model_name)
+
+        results_visualization(result_filename)
+
+
+def run_benchmark(benchmark):
+    result_filename = globals()[benchmark]()
+    with open(result_filename, 'r') as file:
+        return json.load(file)
 
 def machiavelli():
     os.chdir('benchmarks/machiavelli/')
