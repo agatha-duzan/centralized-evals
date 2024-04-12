@@ -1,6 +1,6 @@
 [submodule "benchmarks/ethics-dataset"]
 	path = benchmarks/ethics-dataset
-	url = https://github.com/TetraspaceW/ethics-dataset
+	url = https://github.com/agatha-duzan/ethics-dataset.git
 
 [submodule "models/OpenHermes-2.5-Mistral-7B"]
         path = models/OpenHermes-2.5-Mistral-7B
