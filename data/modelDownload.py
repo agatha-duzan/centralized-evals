@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 def tryRunningModel(model, tokenizer):
     text = input(f"Enter text: ")
-    inputs = tokenizer(text, return_tensors="pt")
+    inputs = tokenizer.encode(text, return_tensors="pt")
     outputs = model.generate(inputs, max_length=500)
 
     print(tokenizer.decode(outputs[0], skip_special_tokens=True))
