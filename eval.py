@@ -62,7 +62,7 @@ def theory_of_mind():
 def llm_rules():
     os.chdir('benchmarks/llm_rules/')
     if 'gpt-' in model_name:
-        subprocess.run(['python', 'evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
+        subprocess.run(['python', 'scripts/evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
     else:
         print(f"====================")
         print(f"REDTEAMING: \n {model_name}")

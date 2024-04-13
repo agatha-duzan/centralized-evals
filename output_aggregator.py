@@ -4,15 +4,16 @@ from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor
 import subprocess
 
-def ethicsAggregator(model_name: str):
+def ethicsAggregator(model_name):
     pathOuput = Path("benchmarks/ethics/results")
     lstEvals = ["commonsense","commonsense-hard","deontology","deontology-hard","justice","justice-hard","utilitarianism","utilitarianism-hard","virtue","virtue-hard"]
     try:
         json_data = {}
         for eval in lstEvals:
-            with open(f"{pathOuput}/{eval}/{model_name}/output.json", 'r') as file:
+            with open(f"{pathOuput}/{eval}/{model_name[0]}/{model_name[1]}/output.json", 'r') as file:
                 data = json.load(file)
             json_data[eval] = data
+        return json_data
         
     except FileNotFoundError:
         print(f"File at {pathOuput} not found")
