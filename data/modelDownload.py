@@ -11,10 +11,10 @@ def tryRunningModel(model, tokenizer):
 
 
 def main():
-    #models_list = ["mistralai/Mixtral-8x7B-v0.1"]#, "ai21labs/Jamba-v0.1", "CohereForAI/c4ai-command-r-plus"]
+    models_list = "CobraMamba/mamba-gpt-3b-v4" #["mistralai/Mixtral-8x7B-v0.1"]#, "ai21labs/Jamba-v0.1", "CohereForAI/c4ai-command-r-plus"]
 
-    tokenizer = None
-    model = None
+    model = AutoModelForCausalLM.from_pretrained(models_list, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(models_list)
 
     #for model_id in models_list:
     #    print(f"Downloading {model_id}...")

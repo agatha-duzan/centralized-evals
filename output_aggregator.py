@@ -1,28 +1,36 @@
 import json
 import os
 from pathlib import Path
-import multiprocessing as mp
+from concurrent.futures import ProcessPoolExecutor
+import subprocess
 
-def ethicsAggregator(model_name: str)-> bool:
+def ethicsAggregator(model_name: str):
     pathOuput = Path("benchmarks/ethics/results")
     lstEvals = ["commonsense","commonsense-hard","deontology","deontology-hard","justice","justice-hard","utilitarianism","utilitarianism-hard","virtue","virtue-hard"]
     try:
+        json_data = {}
         for eval in lstEvals:
-            with open(pathOuput/f"{eval}/f"{model_name}".json", 'r') as file:
+            with open(f"{pathOuput}/{eval}/{model_name}/output.json", 'r') as file:
                 data = json.load(file)
-                print(data)
+            json_data[eval] = data
 
-    return True
+    except FileNotFoundError:
+        print(f"File at {pathOuput} not found")
 
-def theoryOfMindAggregator(model_name: str)-> bool:
+def theoryOfMindAggregator(model_name: str):
+    os.chdir('benchmarks/theory_of_mind/')
+    try:
+        subprocess.run(['python', f"scripts/process_raw_output.py"])
 
-    return True
+    except FileNotFoundError:
+        print(f"file not found at {os.getcwd()}")
+    return
 
-def machiavelliAggregator(model_name: str)-> bool:
+def machiavelliAggregator(model_name: str):
+    return
 
-    return True
 
-def llmRulesAggregator(model_name: str)-> bool:
+def llmRulesAggregator(model_name: str):
     # add json name etc
     pathOutput = Path("benchmarks/llm_rules/logs/redteam")
     try: 
@@ -39,13 +47,18 @@ def fileAggregator(model_name: str)-> bool:
     components = model_name.split('/')
     benchmarksAggregators = [ethicsAggregator, theoryOfMindAggregator, machiavelliAggregator, llmRulesAggregator] 
     try:
-        ctx = mp.get_context('spawn')
-        with ctx.Pool() as pool:
-            print("Tokenizing data...")
-            results = list(pool.imap(tokenize_and_print, [(i, dataset[i]['text']) for i in range(dataLen)]), total=len(benchmarksAggregators)))
+        with ProcessPoolExecutor() as executor:
+            futures = [executor.submit(run_aggregator, benchmark, components) for benchmark in benchmarksAggregators]
+            results = [future.result() for future in futures]
+            print(f"Results have been collected: {results}")
+            return True
 
     except FileNotFoundError:
         return True
+
+def run_aggregator(benchmark, components):
+    result_filename = globals()[benchmark](components)
+    return result_filename
 
 def main():
     print(f"Current working directory: {os.getcwd()}")

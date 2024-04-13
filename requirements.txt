@@ -16,3 +16,5 @@ fschat==0.2.31
 tenacity>=8.0.1
 python-dotenv
 together
+mamba-ssm 
+causal-conv1d>=1.2.0
