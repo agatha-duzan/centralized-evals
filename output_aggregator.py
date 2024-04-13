@@ -28,11 +28,20 @@ def theoryOfMindAggregator(model_name: str):
     return
 
 def machiavelliAggregator(model_name: str):
+    os.chdir('benchmarks/machiavelli/')
+    try:
+        subprocess.run(['python', f"scripts/process_raw_output.py"])
+
+    except FileNotFoundError:
+        print(f"file not found at {os.getcwd()}")
+    return
+
     return
 
 
 def llmRulesAggregator(model_name: str):
     # add json name etc
+    ch
     pathOutput = Path("benchmarks/llm_rules/logs/redteam")
     try: 
         with open(pathOutput, 'r') as file:

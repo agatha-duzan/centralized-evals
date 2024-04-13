@@ -1,11 +1,14 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 def tryRunningModel(model, tokenizer):
-    text = input(f"Enter text: ")
-    inputs = tokenizer.encode(text, return_tensors="pt")
-    outputs = model.generate(inputs, max_length=500)
+    output = ""
+    while True:
+        output += input(f"Enter text: ")
+        inputs = tokenizer(output, return_tensors="pt").to(model.device)
+        outputs = model.generate(**inputs, max_length=500)
+        output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        print(output)
 
-    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 
 def main():
