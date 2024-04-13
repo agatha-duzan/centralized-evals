@@ -14,9 +14,6 @@ model_name = sys.argv[1]
 def main():
     packages = select_packages()
     benchmarks = get_benchmarks(packages)
-   
-    if 'gpt-' in model_name:
-        os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
 
     print("Selected packages: ", ', '.join(packages))
 
@@ -57,7 +54,6 @@ def ethics():
 def theory_of_mind():
     os.chdir('benchmarks/theory_of_mind/scripts/')
     if 'gpt-' in model_name:
-        os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10'])
     else:
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10', '--huggingface', 'True'])
