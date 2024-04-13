@@ -48,7 +48,7 @@ def ethics():
     if 'gpt-' in model_name:
         subprocess.run(['python', 'evaluate.py', '--model', model_name])
     else:
-        subprocess.run(['python', 'benchmarks/ethics/evaluate.py', '--model', model_name])
+        subprocess.run(['python', 'evaluate.py', '--model', model_name])
     os.chdir('../../')
 
 def theory_of_mind():
