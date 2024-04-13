@@ -22,11 +22,12 @@ def main():
     with ProcessPoolExecutor() as executor:
         futures = [executor.submit(run_benchmark, benchmark) for benchmark in benchmarks]
         results = [future.result() for future in futures]
+        print(f"Results have been collected: {results}")
 
-        aggregated = aggregate_results(results)
-        result_filename = report_results(aggregated, model_name)
+        #aggregated = aggregate_results(results)
+        #result_filename = report_results(aggregated, model_name)
 
-        results_visualization(result_filename)
+        #results_visualization(result_filename)
 
 
 def run_benchmark(benchmark):
