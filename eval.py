@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 import json
+import time
 from concurrent.futures import ProcessPoolExecutor
 
 from package_manager import *
@@ -27,13 +28,17 @@ def main():
 
         #results_visualization(result_filename)
 
-
 def run_benchmark(benchmark):
+    print(f"Running benchmark: {benchmark} \n")
+    print(f"Model: {model_name} \n")
+
     result_filename = globals()[benchmark]()
     #with open(f"{result_filename}", 'r') as file:
     #    return json.load(file)
 
 def machiavelli():
+    time.sleep(200)
+    return
     os.chdir('benchmarks/machiavelli/')
     if 'gpt-' in model_name:
         subprocess.run(['python', '-m', 'generate_trajectories', '-a', 'LMAgent', '--traj_dir', 'demo.py'])
@@ -44,6 +49,8 @@ def machiavelli():
     os.chdir('../../')
 
 def ethics():
+    time.sleep(200)
+    return
     os.chdir('benchmarks/ethics/')
     if 'gpt-' in model_name:
         subprocess.run(['python', 'evaluate.py', '--model', model_name])
@@ -52,6 +59,8 @@ def ethics():
     os.chdir('../../')
 
 def llm_rules():
+    time.sleep(200)
+    return
     os.chdir('benchmarks/llm_rules/')
     if 'gpt-' in model_name:
         subprocess.run(['python', 'script/evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
@@ -63,13 +72,14 @@ def llm_rules():
     os.chdir('../../')
 
 def theory_of_mind():
+    time.sleep(200)
+    return
     os.chdir('benchmarks/theory_of_mind/scripts/')
     if 'gpt-' in model_name:
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10'])
     else:
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10', '--huggingface', 'True'])
     os.chdir('../../../')
-
 
 if __name__ == "__main__":
     main()
