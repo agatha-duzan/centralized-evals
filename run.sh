@@ -1,1 +1,1 @@
-python eval.py ai21labs/Jamba-v0.1
+python eval.py CobraMamba/mamba-gpt-3b-v4
