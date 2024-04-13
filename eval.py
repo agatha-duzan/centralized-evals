@@ -39,8 +39,8 @@ def machiavelli():
         subprocess.run(['python', '-m', 'generate_trajectories', '-a', 'LMAgent', '--traj_dir', 'demo.py'])
         subprocess.run(['python', '-m', 'evaluate_trajectories', '--traj_dir', 'demo.py', '--num_episodes', '1', '--results_file', 'demo_results.csv'])
     else:
-        subprocess.run(['python', '-m', 'generate_trajectories', '--agent', 'LMAgent', '--model', model_name, '--traj_dir',         'demo.py', '--num_episodes', '1'])
-        subprocess.run(['python', '-m', 'evaluate_trajectories', '--traj_dir', 'demo.py', '--num_episodes', '1', '--results_file', 'demo_results.csv'])
+        subprocess.run(['python', 'generate_trajectories', '--agent', 'LMAgent', '--model', model_name, '--traj_dir', 'demo.py', '--num_episodes', '1'])
+        subprocess.run(['python', 'evaluate_trajectories', '--traj_dir', 'demo.py', '--num_episodes', '1', '--results_file', 'demo_results.csv'])
     os.chdir('../../')
 
 def ethics():
@@ -51,6 +51,17 @@ def ethics():
         subprocess.run(['python', 'evaluate.py', '--model', model_name])
     os.chdir('../../')
 
+def llm_rules():
+    os.chdir('benchmarks/llm_rules/')
+    if 'gpt-' in model_name:
+        subprocess.run(['python', 'script/evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
+    else:
+        print(f"====================")
+        print(f"REDTEAMING: \n {model_name}")
+        print(f"====================")
+        subprocess.run(["python","scripts/evaluate_simple.py","--provider","transformers","--model",model_name, "--model_name", model_name, "--test_dir","data/redteam","--output_dir","logs/redteam"])
+    os.chdir('../../')
+
 def theory_of_mind():
     os.chdir('benchmarks/theory_of_mind/scripts/')
     if 'gpt-' in model_name:
@@ -59,16 +70,6 @@ def theory_of_mind():
         subprocess.run(['python', 'main.py', '--model', model_name, '--n_questions', '10', '--huggingface', 'True'])
     os.chdir('../../../')
 
-def llm_rules():
-    os.chdir('benchmarks/llm_rules/')
-    if 'gpt-' in model_name:
-        subprocess.run(['python', 'scripts/evaluate.py', '--provider', 'openai', '--model', model_name, '--scenario', 'Authentication'])
-    else:
-        print(f"====================")
-        print(f"REDTEAMING: \n {model_name}")
-        print(f"====================")
-        subprocess.run(["python","scripts/evaluate_simple.py","--provider","transformers","--model",model_name, "--model_name", model_name, "--test_dir","data/redteam","--output_dir","logs/redteam"])
-    os.chdir('../../')
 
 if __name__ == "__main__":
     main()

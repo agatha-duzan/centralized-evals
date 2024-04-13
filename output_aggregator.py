@@ -28,7 +28,9 @@ def theoryOfMindAggregator(model_name: str):
     os.chdir('../..')
 
 def machiavelliAggregator(model_name: str):
+
     filePath = Path("benchmarks/machiavelli/demo_results.csv")
+    return filePath
     #os.chdir('benchmarks/machiavelli/')
     #try:
     #    subprocess.run(['python', f"scripts/process_raw_output.py"])
