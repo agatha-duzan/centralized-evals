@@ -25,7 +25,7 @@ def theoryOfMindAggregator(model_name: str):
 
     except FileNotFoundError:
         print(f"file not found at {os.getcwd()}")
-    return
+    os.chdir('../..')
 
 def machiavelliAggregator(model_name: str):
     os.chdir('benchmarks/machiavelli/')
@@ -34,10 +34,7 @@ def machiavelliAggregator(model_name: str):
 
     except FileNotFoundError:
         print(f"file not found at {os.getcwd()}")
-    return
-
-    return
-
+    os.chdir('../..')
 
 def llmRulesAggregator(model_name: str):
     # add json name etc

@@ -9,8 +9,6 @@ def tryRunningModel(model, tokenizer):
         output = tokenizer.decode(outputs[0], skip_special_tokens=True)
         print(output)
 
-
-
 def main():
     models_list = "CobraMamba/mamba-gpt-3b-v4" #["mistralai/Mixtral-8x7B-v0.1"]#, "ai21labs/Jamba-v0.1", "CohereForAI/c4ai-command-r-plus"]
 
