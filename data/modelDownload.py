@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 def tryRunningModel(model, tokenizer):
-    text = input()
+    text = input(f"Enter text: ")
     model = AutoModelForCausalLM.from_pretrained("ai21labs/Jamba-v0.1", trust_remote_code=True)
     tokenizer = AutoTokenizer.from_pretrained("ai21labs/Jamba-v0.1")
     inputs = tokenizer(text, return_tensors="pt")
