@@ -6,6 +6,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 from package_manager import *
 from report import *
+from output_aggregator import *
 
 model_name = sys.argv[1]
 #cached_location = sys.argv[2]
@@ -22,7 +23,7 @@ def main():
     with ProcessPoolExecutor() as executor:
         futures = [executor.submit(run_benchmark, benchmark) for benchmark in benchmarks]
         results = [future.result() for future in futures]
-        print(f"Results have been collected: {results}")
+        print(f"Results have been collected: {}")
 
         #aggregated = aggregate_results(results)
         #result_filename = report_results(aggregated, model_name)
