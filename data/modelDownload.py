@@ -3,9 +3,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 def tryRunningModel(model, tokenizer):
     text = input(f"Enter text: ")
     inputs = tokenizer(text, return_tensors="pt")
-    outputs = model(**inputs, max_new_tokens=500)
+    outputs = model.generate(inputs, max_length=500, temperature=0.7)
 
-    print(tokenizer.decode(outputs[0]))
+    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 
 def main():
