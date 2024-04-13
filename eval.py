@@ -31,8 +31,8 @@ def main():
 
 def run_benchmark(benchmark):
     result_filename = globals()[benchmark]()
-    with open(f"{result_filename}", 'r') as file:
-        return json.load(file)
+    #with open(f"{result_filename}", 'r') as file:
+    #    return json.load(file)
 
 def machiavelli():
     os.chdir('benchmarks/machiavelli/')
