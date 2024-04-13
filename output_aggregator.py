@@ -13,7 +13,8 @@ def ethicsAggregator(model_name: str):
             with open(f"{pathOuput}/{eval}/{model_name}/output.json", 'r') as file:
                 data = json.load(file)
             json_data[eval] = data
-
+        
+        
     except FileNotFoundError:
         print(f"File at {pathOuput} not found")
 
