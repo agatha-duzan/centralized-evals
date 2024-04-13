@@ -14,7 +14,6 @@ def ethicsAggregator(model_name: str):
                 data = json.load(file)
             json_data[eval] = data
         
-        
     except FileNotFoundError:
         print(f"File at {pathOuput} not found")
 
@@ -28,17 +27,18 @@ def theoryOfMindAggregator(model_name: str):
     os.chdir('../..')
 
 def machiavelliAggregator(model_name: str):
-    os.chdir('benchmarks/machiavelli/')
-    try:
-        subprocess.run(['python', f"scripts/process_raw_output.py"])
+    filePath = Path("benchmarks/machiavelli/demo_results.csv")
+    #os.chdir('benchmarks/machiavelli/')
+    #try:
+    #    subprocess.run(['python', f"scripts/process_raw_output.py"])
 
-    except FileNotFoundError:
-        print(f"file not found at {os.getcwd()}")
-    os.chdir('../..')
+    #except FileNotFoundError:
+    #    print(f"file not found at {os.getcwd()}")
+    #os.chdir('../..')
 
 def llmRulesAggregator(model_name: str):
     # add json name etc
-    ch
+
     pathOutput = Path("benchmarks/llm_rules/logs/redteam")
     try: 
         with open(pathOutput, 'r') as file:
